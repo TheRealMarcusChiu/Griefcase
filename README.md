@@ -1,35 +1,25 @@
 # Griefcase
 
-*Familiar things. For unfamiliar days.*
+The site is a single static page showing one quote, centred on a warm dark background:
 
-A play on *briefcase*: a small, private case in your browser for the familiar things that console you while grieving — photos, words, songs and people or places that feel like home — plus a quiet-moment space with an optional one-minute paced breath.
+> the opposite of grief isn't happiness; the opposite of grief is forgetting......... Now you could either grieve or forget.
 
-Griefcase is a personal keepsake tool. It is **not therapy, medical care or a crisis service**. If you or someone else is in immediate danger, contact your local emergency services.
+Plain HTML and CSS only: no JavaScript, forms, fonts, analytics or network requests (enforced with a Content Security Policy).
 
-## What it does
+## Earlier comfort-case app and your browser data
 
-- **Open my case** — four compartments: *Memories & photos*, *Words to keep*, *Familiar sounds* (optional http/https music link, opened in a new tab; nothing autoplays) and *People & places* (optional contact note or location). Add, edit and remove items. Each form shows only the fields for that compartment.
-- **Photos** — JPEG, PNG or WebP up to 15 MB, resized and re-encoded as JPEG on your device (canvas). No SVG and no remote image URLs.
-- **Sample ideas** — four clearly labelled, removable suggestions. They are not real records.
-- **Backups** — export a JSON file; import validates the whole file before asking to replace your case. Malformed or oversized files change nothing.
-- **Take a quiet moment** — optional sensory prompts, a 60-second breathing cue (in 4, out 6, no holding) that starts only when you press start and can be stopped anytime, and a small card of practical comforts. No streaks, scores or reminders.
+Griefcase used to be a local-only "comfort case" app that kept photos, words, sounds and people in the browser's `localStorage`. That app has been retired; its code remains in git history (commit `948da50`).
 
-## Privacy
-
-- Everything is stored in this browser’s `localStorage` on this device. Nothing is sent anywhere: no accounts, analytics, trackers, fonts or network requests (enforced with a Content Security Policy, `connect-src 'none'`).
-- Storage is **not encrypted**. Anyone using the same device and browser profile can see it.
-- **Browser data can disappear** — clearing site data, private browsing, storage pressure or switching browsers will lose it. **Export backups regularly** and keep them somewhere private (they contain your photos and words unencrypted).
-- If saving fails (e.g. storage is full), Griefcase says so, keeps your change in the open tab, and asks you to export. If saved data can’t be read, it is never overwritten until you import a backup or clear all data.
-- *Clear all data* (with confirmation) removes everything Griefcase stored.
+The new page does not read, clear or migrate that data. Anything you stored is left untouched in your browser under the same site, but it is no longer viewable from this page. Clearing site data in your browser will remove it.
 
 ## Develop
 
-No dependencies, no build step. Plain HTML, CSS and JavaScript ES modules.
+No dependencies, no build step.
 
 ```sh
-npm test          # Node built-in test runner (model, storage, breathing schedule)
-npm run check     # syntax check of all modules
-python3 -m http.server 8000   # then open http://localhost:8000 (ES modules don't load from file://)
+npm test          # static checks: exact sole visible text, no scripts/forms/buttons, CSS link, mobile-safe quote styles
+npm run check     # syntax check of the test file
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
 ## Deploy (GitHub Pages)
