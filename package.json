@@ -1,0 +1,12 @@
+{
+  "name": "griefcase",
+  "version": "1.0.0",
+  "description": "Familiar things. For unfamiliar days. A local-only comfort case for grieving people.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/model.js && node --check src/storage.js && node --check src/breath.js && node --check src/image.js && node --check src/app.js"
+  }
+}
