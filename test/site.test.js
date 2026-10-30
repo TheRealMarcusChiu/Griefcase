@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 
-const QUOTE = "the opposite of grief isn't happiness; the opposite of grief is forgetting......... Now you could either grieve or forget.";
+const QUOTE = "The opposite of grief isn't happiness. The opposite of grief is forgetting, and as painful as grief is, you wouldn't wanna forget. The only way out isn't through, grief will always be with you and you'll be okay.";
 const root = new URL('../', import.meta.url);
 const html = readFileSync(new URL('index.html', root), 'utf8');
 const css = readFileSync(new URL('styles.css', root), 'utf8');
@@ -16,6 +16,10 @@ test('the quote is the only visible text', () => {
   const body = html.match(/<body[^>]*>([\s\S]*)<\/body>/i)[1];
   const text = decode(body.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
   assert.equal(text, QUOTE);
+});
+
+test('document title is exactly greifcase', () => {
+  assert.equal(html.match(/<title>([^<]*)<\/title>/i)[1], 'greifcase');
 });
 
 test('no script, form, buttons, inputs or external requests', () => {

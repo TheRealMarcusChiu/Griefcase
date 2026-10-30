@@ -1,8 +1,8 @@
-# Griefcase
+# greifcase
 
 The site is a single static page showing one quote, centred on a warm dark background:
 
-> the opposite of grief isn't happiness; the opposite of grief is forgetting......... Now you could either grieve or forget.
+> The opposite of grief isn't happiness. The opposite of grief is forgetting, and as painful as grief is, you wouldn't wanna forget. The only way out isn't through, grief will always be with you and you'll be okay.
 
 Plain HTML and CSS only: no JavaScript, forms, fonts, analytics or network requests (enforced with a Content Security Policy).
 
